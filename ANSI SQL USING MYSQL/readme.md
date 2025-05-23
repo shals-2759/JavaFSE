@@ -1,1 +1,1 @@
-
+This folder contains ANSI SQL exercises designed to work with a MySQL-based Event Management System database schema. The queries demonstrate practical SQL techniques like joins, aggregations, filtering, date manipulation, subqueries, and grouping.
