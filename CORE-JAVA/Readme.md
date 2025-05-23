@@ -1,1 +1,1 @@
-
+This repository contains a series of Java exercises focused on core Java concepts and multithreading. The exercises demonstrate practical usage of threads, executor services, and other concurrency features, including Java 21's virtual threads.
