@@ -172,7 +172,6 @@ function submitRegistration(data) {
 
 // 13. Debugging
 console.log("Form submission started");
-// Use breakpoints in Chrome DevTools and watch variables during this stage
 
 // 14. jQuery
 $(document).ready(function () {
@@ -182,6 +181,5 @@ $(document).ready(function () {
 
   $(".event-card").fadeIn();
 
-  // Benefit of using frameworks:
-  // React and Vue make dynamic UI updates easier with component-based architecture.
+  
 });
