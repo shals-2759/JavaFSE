@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header class="site-header">
+  <h1>EventSphere</h1>
+</header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Community Event Portal</title>
+
+  <!-- Internal CSS for body background -->
+  <style>
+    body {
+      background-color: #f0f8ff; /* light blue background */
+    }
+  </style>
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="../upskilling_css/styles.css" />
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+  <script>
+    /* your existing JS unchanged */
+    function enlargeImage(el) {
+      el.style.width = '200px';
+    }
+    function videoReady() {
+      document.getElementById('videoMsg').textContent = 'Video ready to play';
+    }
+    function findLocation() {
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const { latitude, longitude } = pos.coords;
+          document.getElementById('location').textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+        },
+        err => {
+          alert('Geolocation error: ' + err.message);
+        },
+        { enableHighAccuracy: true, timeout: 5000 }
+      );
+    }
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      alert('Preferences cleared.');
+    }
+    function savePreference() {
+      const selected = document.getElementById("eventType").value;
+      localStorage.setItem("preferredEvent", selected);
+    }
+    window.onload = function () {
+      const saved = localStorage.getItem("preferredEvent");
+      if (saved) {
+        document.getElementById("eventType").value = saved;
+      }
+    }
+    window.onbeforeunload = function () {
+      return 'You have unsaved changes. Are you sure you want to leave?';
+    };
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+  <a href="index.html">Home</a>
+  <a href="events.html">Event Details</a>
+  <a href="register.html">Register</a>
+  <a href="help.html" target="_blank">Help</a>
+</nav>
+
+
+  <!-- Main -->
+  <div class="container">
+    <main>
+      <section id="home">
+        <div id="welcomeBanner">
+          <!-- Inline style to make this heading red -->
+          <h1 style="color: red;">Welcome, <span class="special-member">special member</span>! <span class="highlight">Join today's events!</span></h1>
+        </div>
+      </section>
+
+      <!-- rest remains unchanged -->
+      <section id="gallery">
+        <h2>Community Event Gallery</h2>
+        <table>
+          <caption>Past Event Highlights</caption>
+          <tr>
+            <td><img src="event1.jpg" alt="Music Event" title="Music" ondblclick="enlargeImage(this)"></td>
+            <td><img src="event2.jpg" alt="Dance Event" title="Dance" ondblclick="enlargeImage(this)"></td>
+            <td><img src="event3.jpg" alt="Tech Fair" title="Tech" ondblclick="enlargeImage(this)"></td>
+          </tr>
+          <tr>
+            <td><img src="event4.jpg" alt="Food Fest" title="Food" ondblclick="enlargeImage(this)"></td>
+            <td><img src="event5.jpg" alt="Art Show" title="Art" ondblclick="enlargeImage(this)"></td>
+            <td><img src="event6.jpg" alt="Game Zone" title="Games" ondblclick="enlargeImage(this)"></td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="media">
+        <h2>Event Promo</h2>
+        <video controls oncanplay="videoReady()">
+          <source src="promo.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+        <div id="videoMsg"></div>
+      </section>
+
+      
+
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <label for="eventType">Preferred Event Type:</label>
+        <select id="eventType" onchange="savePreference()">
+          <option value="">-- Select --</option>
+          <option value="Music">Music</option>
+          <option value="Tech">Tech</option>
+          <option value="Food">Food</option>
+        </select>
+        <br><br>
+        <button onclick="clearPreferences()">Clear Preferences</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local Community Council</p>
+  </footer>
+</body>
+<script src="../upskilling_js/main.js"></script>
+
+</html>

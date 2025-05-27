@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f8ff; }
+    form { background-color: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    label { display: block; margin-top: 10px; }
+    input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+    output { display: block; margin-top: 15px; font-weight: bold; color: green; }
+  </style>
+  <script>
+    function validatePhone(el) {
+      const pattern = /^\\d{10}$/;
+      if (!pattern.test(el.value)) {
+        alert('Phone number must be 10 digits');
+      }
+    }
+
+    function displayFee(e) {
+      const fees = { Music: 20, Dance: 30, Tech: 40 };
+      document.getElementById('feeDisplay').textContent = '$' + (fees[e.value] || 0);
+      localStorage.setItem('preferredEvent', e.value);
+    }
+
+    function showConfirmation() {
+      document.getElementById('outputMsg').value = 'Registration successful!';
+    }
+
+    function countCharacters(el) {
+      document.getElementById('charCount').textContent = el.value.length;
+    }
+
+    function restorePreferences() {
+      const saved = localStorage.getItem('preferredEvent');
+      if (saved) document.getElementById('eventType').value = saved;
+    }
+
+    window.onload = restorePreferences;
+  </script>
+</head>
+<body>
+  <h1>Register for a Community Event</h1>
+  <form onsubmit="showConfirmation(); return false;">
+    <label>Name:
+      <input type="text" name="name" required placeholder="Your name" autofocus>
+    </label>
+    <label>Email:
+      <input type="email" name="email" required placeholder="you@example.com">
+    </label>
+    <label>Date:
+      <input type="date" name="date" required>
+    </label>
+    <label>Event Type:
+      <select id="eventType" name="event" onchange="displayFee(this)">
+        <option value="">Choose event</option>
+        <option value="Music">Music</option>
+        <option value="Dance">Dance</option>
+        <option value="Tech">Tech</option>
+      </select>
+    </label>
+    Fee: <span id="feeDisplay">$0</span><br><br>
+    <label>Phone:
+      <input type="text" name="phone" onblur="validatePhone(this)" placeholder="10-digit number">
+    </label>
+    <label>Message:
+      <textarea name="message" onkeyup="countCharacters(this)"></textarea>
+    </label>
+    Characters typed: <span id="charCount">0</span><br><br>
+    <input type="submit" value="Submit">
+    <output id="outputMsg"></output>
+  </form>
+</body>
+</html>

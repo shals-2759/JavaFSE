@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header class="site-header">
+  <h1>EventSphere</h1>
+</header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Event Details - Local Community Portal</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="../upskilling_css/styles.css" />
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="../upskilling_js/main.js"></script>
+
+  <!-- Internal Style for body background (optional) -->
+  <style>
+    body {
+      background-color: #fff8f0; /* soft cream background */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="events.html">Event Details</a>
+    <a href="register.html">Register</a>
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Promo Video Section -->
+    <section id="media">
+      <h2>Event Promo</h2>
+      <video controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4" />
+        Your browser does not support video.
+      </video>
+      <div id="videoMsg"></div>
+    </section>
+
+    <!-- Geolocation Section -->
+    <section id="geo">
+      <h2>Find Nearby Events</h2>
+      <button onclick="findLocation()">Find Nearby Events</button>
+      <div id="location"></div>
+    </section>
+
+    <!-- Preferences Section -->
+    <section id="contact">
+      <h2>Your Event Preferences</h2>
+      <label for="eventType">Preferred Event Type:</label>
+      <select id="eventType" onchange="savePreference()">
+        <option value="">-- Select --</option>
+        <option value="Music">Music</option>
+        <option value="Tech">Tech</option>
+        <option value="Food">Food</option>
+      </select>
+      <br><br>
+      <button onclick="clearPreferences()">Clear Preferences</button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local Community Council</p>
+  </footer>
+
+</body>
+</html>
